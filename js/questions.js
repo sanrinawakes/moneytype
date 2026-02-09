@@ -62,7 +62,7 @@ window.QUESTIONS = [
       { text: "短期成果を求められる仕事", score: "grow_stack" },
       { text: "常に人前に立ち続ける仕事", score: "inner_resonance" },
       { text: "裁量や表現の余地がない仕事", score: "influence_send" },
-      { text: "全体の空気や調整ばかりの仕事", score: "place_stable" }
+      { text: "前に進める裁量がなく、その場を丸く収めることだけ求められる仕事", score: "place_stable" }
     ]
   },
 
@@ -99,7 +99,7 @@ window.QUESTIONS = [
     text: "悩んだ時、一番最初にやりがちなのは？",
     choices: [
       { text: "細かいことは考えず、とりあえず1つ動いてみる（例：連絡する／着手する）", score: "expand_drive" },
-      { text: "これまでの流れや積み上げを振り返り、見直す", score: "grow_stack" },
+      { text: "これまで積み上げてきたことを、今後どう育てるか考える", score: "grow_stack" },
       { text: "複数人に話して意見や視点を集める", score: "flow_cycle" },
       { text: "信頼できる1人に相談する", score: "inner_resonance" },
       { text: "ノートやメモに書き出して整理する", score: "precision_build" }
@@ -123,7 +123,7 @@ window.QUESTIONS = [
     text: "仕事をしていて、手応えを感じやすいのはどんな時？",
     choices: [
       { text: "新しいことをやっている時", score: "expand_drive" },
-      { text: "慣れ親しんだ仕事をしている時", score: "grow_stack" },
+      { text: "慣れていて勝手がわかっている仕事をしている時", score: "grow_stack" },
       { text: "伝えたいことを表現している時", score: "influence_send" },
       { text: "誰かの話を深く聞いている時", score: "inner_resonance" },
       { text: "場や流れを整えている時", score: "place_stable" }

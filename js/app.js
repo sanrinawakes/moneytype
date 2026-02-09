@@ -1,9 +1,9 @@
 // ===============================
-// 金持ちタイプ診断 app.js（質問ランダム対応・完全版）
+// 金持ちタイプ診断 app.js（URL結果渡し・完全版）
 // ===============================
 
 // -------------------------------
-// ユーティリティ：シャッフル（元配列は壊さない）
+// ユーティリティ：シャッフル
 // -------------------------------
 function shuffle(array) {
   const arr = array.slice();
@@ -15,17 +15,12 @@ function shuffle(array) {
 }
 
 // -------------------------------
-// 質問配列の準備
+// 質問配列（表示用）
 // フェーズ1：固定 / フェーズ2：ランダム
 // -------------------------------
 const phase1 = QUESTIONS.filter(q => q.type === "polarity");
 const phase2 = QUESTIONS.filter(q => q.type !== "polarity");
-
-// 表示専用（これだけを使う）
-const DISPLAY_QUESTIONS = [
-  ...phase1,
-  ...shuffle(phase2)
-];
+const DISPLAY_QUESTIONS = [...phase1, ...shuffle(phase2)];
 
 // -------------------------------
 // 状態管理
@@ -49,23 +44,18 @@ const counterText = document.getElementById("counterText");
 const choicesBox = document.getElementById("choices");
 const progressFill = document.getElementById("progressFill");
 
-// -------------------------------
 // 初期表示
-// -------------------------------
 quiz.style.display = "none";
 
 // -------------------------------
 // イベント
 // -------------------------------
-
-// 診断開始
 startBtn.addEventListener("click", () => {
   intro.style.display = "none";
   quiz.style.display = "block";
   render();
 });
 
-// 最初から
 resetBtn.addEventListener("click", () => {
   current = 0;
   answers = [];
@@ -73,7 +63,6 @@ resetBtn.addEventListener("click", () => {
   intro.style.display = "block";
 });
 
-// 前へ
 prevBtn.addEventListener("click", () => {
   if (current > 0) {
     current--;
@@ -81,21 +70,25 @@ prevBtn.addEventListener("click", () => {
   }
 });
 
-// 次へ
 nextBtn.addEventListener("click", () => {
   if (answers[current] == null) return;
 
   current++;
 
-  // 最後まで回答したら結果へ
+  // 最後まで回答 → 結果へ
   if (current >= DISPLAY_QUESTIONS.length) {
     const selectedChoices = answers.map(
       (choiceIndex, i) => DISPLAY_QUESTIONS[i].choices[choiceIndex]
     );
 
     const result = DIAGNOSIS.calculate(selectedChoices);
-    localStorage.setItem("result", JSON.stringify(result));
-    location.href = "result.html";
+
+    // 結果をURLに載せる（Base64）
+    const encoded = btoa(
+      encodeURIComponent(JSON.stringify(result))
+    );
+
+    location.href = `result.html?data=${encoded}`;
     return;
   }
 
@@ -103,25 +96,18 @@ nextBtn.addEventListener("click", () => {
 });
 
 // -------------------------------
-// 描画処理
+// 描画
 // -------------------------------
 function render() {
   const q = DISPLAY_QUESTIONS[current];
 
-  // 質問文
   questionText.textContent = q.text;
-
-  // カウンター
   counterText.textContent =
     `質問 ${current + 1} / ${DISPLAY_QUESTIONS.length}`;
 
-  // プログレスバー
-  const progress = Math.round(
-    ((current + 1) / DISPLAY_QUESTIONS.length) * 100
-  );
-  progressFill.style.width = `${progress}%`;
+  progressFill.style.width =
+    `${Math.round(((current + 1) / DISPLAY_QUESTIONS.length) * 100)}%`;
 
-  // 選択肢描画
   choicesBox.innerHTML = "";
 
   q.choices.forEach((choice, idx) => {
@@ -139,7 +125,6 @@ function render() {
     choicesBox.appendChild(div);
   });
 
-  // ボタン状態
   prevBtn.disabled = current === 0;
   nextBtn.disabled = answers[current] == null;
 }

@@ -1,12 +1,41 @@
 // ===============================
-// 金持ちタイプ診断 app.js（完全版）
+// 金持ちタイプ診断 app.js（質問ランダム対応・完全版）
 // ===============================
 
+// -------------------------------
+// ユーティリティ：シャッフル（元配列は壊さない）
+// -------------------------------
+function shuffle(array) {
+  const arr = array.slice();
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+// -------------------------------
+// 質問配列の準備
+// フェーズ1：固定 / フェーズ2：ランダム
+// -------------------------------
+const phase1 = QUESTIONS.filter(q => q.type === "polarity");
+const phase2 = QUESTIONS.filter(q => q.type !== "polarity");
+
+// 表示専用（これだけを使う）
+const DISPLAY_QUESTIONS = [
+  ...phase1,
+  ...shuffle(phase2)
+];
+
+// -------------------------------
 // 状態管理
+// -------------------------------
 let current = 0;
 let answers = [];
 
+// -------------------------------
 // DOM取得
+// -------------------------------
 const intro = document.getElementById("intro");
 const quiz = document.getElementById("quiz");
 
@@ -59,9 +88,9 @@ nextBtn.addEventListener("click", () => {
   current++;
 
   // 最後まで回答したら結果へ
-  if (current >= QUESTIONS.length) {
+  if (current >= DISPLAY_QUESTIONS.length) {
     const selectedChoices = answers.map(
-      (choiceIndex, i) => QUESTIONS[i].choices[choiceIndex]
+      (choiceIndex, i) => DISPLAY_QUESTIONS[i].choices[choiceIndex]
     );
 
     const result = DIAGNOSIS.calculate(selectedChoices);
@@ -77,16 +106,19 @@ nextBtn.addEventListener("click", () => {
 // 描画処理
 // -------------------------------
 function render() {
-  const q = QUESTIONS[current];
+  const q = DISPLAY_QUESTIONS[current];
 
   // 質問文
   questionText.textContent = q.text;
 
   // カウンター
-  counterText.textContent = `質問 ${current + 1} / ${QUESTIONS.length}`;
+  counterText.textContent =
+    `質問 ${current + 1} / ${DISPLAY_QUESTIONS.length}`;
 
   // プログレスバー
-  const progress = Math.round(((current + 1) / QUESTIONS.length) * 100);
+  const progress = Math.round(
+    ((current + 1) / DISPLAY_QUESTIONS.length) * 100
+  );
   progressFill.style.width = `${progress}%`;
 
   // 選択肢描画

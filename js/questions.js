@@ -15,8 +15,8 @@ window.QUESTIONS = [
     type: "polarity",
     text: "ストレス発散するには？",
     choices: [
-      { text: "友人や知人と会う", polarity: "out" },
-      { text: "一人でストレス発散する", polarity: "in" }
+      { text: "身体を動かす", polarity: "out" },
+      { text: "しずかに過ごす", polarity: "in" }
     ]
   },
   {
@@ -61,7 +61,7 @@ window.QUESTIONS = [
       { text: "同じことを繰り返す仕事", score: "expand_drive" },
       { text: "短期成果を求められる仕事", score: "grow_stack" },
       { text: "常に人前に立ち続ける仕事", score: "inner_resonance" },
-      { text: "対人スキルが必要な仕事", score: "influence_send" },
+      { text: "裁量や表現の余地がない仕事", score: "influence_send" },
       { text: "全体の空気や調整ばかりの仕事", score: "place_stable" }
     ]
   },
@@ -99,7 +99,7 @@ window.QUESTIONS = [
     text: "悩んだ時、一番最初にやりがちなのは？",
     choices: [
       { text: "細かいことは考えず、とりあえず1つ動いてみる（例：連絡する／着手する）", score: "expand_drive" },
-      { text: "進めていることを一旦止め、振り返る（例：契約・支出・リスクの見直し）", score: "grow_stack" },
+      { text: "これまでの流れや積み上げを振り返り、見直す", score: "grow_stack" },
       { text: "複数人に話して意見や視点を集める", score: "flow_cycle" },
       { text: "信頼できる1人に相談する", score: "inner_resonance" },
       { text: "ノートやメモに書き出して整理する", score: "precision_build" }
@@ -120,7 +120,7 @@ window.QUESTIONS = [
 
   {
     id: "Q8",
-    text: "仕事で『これは自分らしい』と感じる瞬間は？",
+    text: "仕事をしていて、手応えを感じやすいのはどんな時？",
     choices: [
       { text: "新しいことをやっている時", score: "expand_drive" },
       { text: "慣れ親しんだ仕事をしている時", score: "grow_stack" },
@@ -161,7 +161,7 @@ window.QUESTIONS = [
       { text: "新しい企画や行動を試す時間", score: "expand_drive" },
       { text: "いつものテーマに集中する時間", score: "grow_stack" },
       { text: "発信・表現する時間", score: "influence_send" },
-      { text: "人と人のあたたかなやり取りや思いやりを感じる時", score: "inner_resonance" },
+      { text: "誰かと丁寧に関わり、感謝や信頼を感じる時", score: "inner_resonance" },
       { text: "振り返り、状況整理", score: "place_stable" }
     ]
   },

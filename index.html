@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>金持ちタイプ診断</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="brand">
+        <div class="brand__title">金持ちタイプ診断</div>
+        <div class="brand__subtitle">あなたが無理なく豊かになりやすい型を整理</div>
+      </div>
+      <a class="btn btn--ghost" href="./result.html">結果ページ</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card intro" id="intro">
+      <h1>金持ちタイプ診断</h1>
+      <p class="lead">
+        この診断は、あなたが<b>自然体で、無理なく、楽しく豊かになりやすい型</b>を整理するためのものです。
+      </p>
+      <div class="notice">
+        <h3>回答のしかた</h3>
+        <ul>
+          <li>「理想」ではなく、<b>実際の自分</b>で選ぶ</li>
+          <li>迷ったら、<b>普段の自分に近い方</b>を選ぶ</li>
+        </ul>
+      </div>
+      <div class="actions">
+        <button class="btn btn--primary" id="startBtn">診断をはじめる</button>
+      </div>
+    </section>
+
+    <section class="card quiz" id="quiz" style="display:none;">
+      <div class="quiz__head">
+        <div style="flex:1;">
+          <div class="quiz__progressbar">
+            <div class="quiz__progressbarFill" id="progressFill"></div>
+          </div>
+          <div class="quiz__counter" id="counterText">質問 1 / 15</div>
+        </div>
+        <button class="btn btn--ghost btn--small" id="resetBtn">最初から</button>
+      </div>
+
+      <div>
+        <h2 class="quiz__question" id="questionText"></h2>
+        <p class="quiz__hint" id="questionHint"></p>
+        <div class="choices" id="choices"></div>
+      </div>
+
+      <div class="quiz__foot">
+        <button class="btn btn--ghost" id="prevBtn">戻る</button>
+        <button class="btn btn--primary" id="nextBtn" disabled>次へ</button>
+      </div>
+    </section>
+
+    <section class="card smallprint">
+      <p>※本診断は自己理解の補助ツールです。投資助言ではありません。</p>
+    </section>
+  </main>
+
+  <script src="./js/questions.js"></script>
+  <script src="./js/logic.js"></script>
+  <script src="./js/app.js"></script>
+</body>
+</html>

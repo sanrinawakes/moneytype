@@ -134,7 +134,7 @@ window.QUESTIONS = [
     id: "Q9",
     text: "『これは自分の仕事じゃない』と感じやすいのは？",
     choices: [
-      { text: "地味な作業や管理ばかり", score: "expand_drive" },
+      { text: "事務作業ばかり", score: "expand_drive" },
       { text: "即断即決の連続", score: "grow_stack" },
       { text: "目立たない裏方作業", score: "influence_send" },
       { text: "一方的な指示、ビジネスライクな環境", score: "inner_resonance" },

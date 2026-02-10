@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const scoreCard = document.getElementById("scoreCard");
   const detailCard = document.getElementById("detailCard");
 
-  // URLから結果取得
+  // URLから data を取得
   const params = new URLSearchParams(location.search);
   const encoded = params.get("data");
 
@@ -23,15 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const primary = P[result.primary];
-  const secondary = result.secondary ? P[result.secondary] : null;
+  // ★ 正しいキー名で読む（ここが致命点だった）
+  const primaryKey = result.primaryKey;
+  const secondaryKey = result.secondaryKey;
+
+  const primary = P[primaryKey];
+  const secondary = secondaryKey ? P[secondaryKey] : null;
 
   if (!primary) {
     noData.style.display = "block";
     return;
   }
 
-  // HERO
+  // ===== HERO =====
   document.getElementById("badge").textContent = "TYPE";
   document.getElementById("typeName").textContent = primary.name;
   document.getElementById("typeEn").textContent = primary.enName || "";
@@ -46,33 +50,36 @@ document.addEventListener("DOMContentLoaded", () => {
 
   hero.style.display = "block";
 
-  // SCORE
+  // ===== SCORE =====
   const bars = document.getElementById("bars");
-  const entries = Object.entries(result.scores || {});
+  const scores = result.scores || {};
+  const entries = Object.entries(scores);
   const max = Math.max(...entries.map(e => e[1]), 1);
 
   bars.innerHTML = "";
-  entries.sort((a, b) => b[1] - a[1]).forEach(([k, v]) => {
-    const prof = P[k];
-    if (!prof) return;
-    const pct = Math.round((v / max) * 100);
-    const row = document.createElement("div");
-    row.className = "bar";
-    row.innerHTML = `
-      <div class="bar__head">
-        <div class="bar__name">${prof.name}</div>
-        <div class="bar__value">${v} pt</div>
-      </div>
-      <div class="bar__track">
-        <div class="bar__fill" style="width:${pct}%"></div>
-      </div>
-    `;
-    bars.appendChild(row);
-  });
+  entries
+    .sort((a, b) => b[1] - a[1])
+    .forEach(([k, v]) => {
+      const prof = P[k];
+      if (!prof) return;
+      const pct = Math.round((v / max) * 100);
+      const row = document.createElement("div");
+      row.className = "bar";
+      row.innerHTML = `
+        <div class="bar__head">
+          <div class="bar__name">${prof.name}</div>
+          <div class="bar__value">${v} pt</div>
+        </div>
+        <div class="bar__track">
+          <div class="bar__fill" style="width:${pct}%"></div>
+        </div>
+      `;
+      bars.appendChild(row);
+    });
 
   scoreCard.style.display = "block";
 
-  // DETAIL
+  // ===== DETAIL =====
   document.getElementById("essence").innerHTML = primary.essence || "";
   document.getElementById("strengths").innerHTML = primary.strengths || "";
   document.getElementById("pitfalls").innerHTML = primary.pitfalls || "";
@@ -81,10 +88,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("invest").innerHTML = primary.invest || "";
   document.getElementById("danger").innerHTML = primary.danger || "";
   document.getElementById("good").innerHTML = primary.good || "";
+  document.getElementById("jobs").innerHTML = primary.jobs || "";
+  document.getElementById("synergy").innerHTML = primary.synergy || "";
 
   detailCard.style.display = "block";
 
-  // COPY
+  // ===== COPY =====
   document.getElementById("copyBtn")?.addEventListener("click", async () => {
     const t =
       `【金持ちタイプ診断】\n主軸：${primary.name}（${primary.enName}）\n` +

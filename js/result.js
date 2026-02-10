@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const scoreCard = document.getElementById("scoreCard");
   const detailCard = document.getElementById("detailCard");
 
-  // URLから data を取得
   const params = new URLSearchParams(location.search);
   const encoded = params.get("data");
 
@@ -18,12 +17,11 @@ document.addEventListener("DOMContentLoaded", () => {
   let result;
   try {
     result = JSON.parse(decodeURIComponent(atob(encoded)));
-  } catch {
+  } catch (e) {
     noData.style.display = "block";
     return;
   }
 
-  // ★ 正しいキー名で読む（ここが致命点だった）
   const primaryKey = result.primaryKey;
   const secondaryKey = result.secondaryKey;
 
@@ -35,22 +33,17 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  // ===== HERO =====
   document.getElementById("badge").textContent = "TYPE";
   document.getElementById("typeName").textContent = primary.name;
   document.getElementById("typeEn").textContent = primary.enName || "";
   document.getElementById("tagline").textContent = primary.tagline || "";
 
-  document.getElementById("primary").textContent =
-    `${primary.name}（${primary.enName}）`;
-  document.getElementById("secondary").textContent =
-    secondary ? `${secondary.name}（${secondary.enName}）` : "—";
-  document.getElementById("blendNote").textContent =
-    secondary ? "複合型（主軸＋補助）" : "単独型（主軸が明確）";
+  document.getElementById("primary").textContent = `${primary.name}（${primary.enName}）`;
+  document.getElementById("secondary").textContent = secondary ? `${secondary.name}（${secondary.enName}）` : "—";
+  document.getElementById("blendNote").textContent = secondary ? "複合型（主軸＋補助）" : "単独型（主軸が明確）";
 
   hero.style.display = "block";
 
-  // ===== SCORE =====
   const bars = document.getElementById("bars");
   const scores = result.scores || {};
   const entries = Object.entries(scores);
@@ -79,7 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   scoreCard.style.display = "block";
 
-  // ===== DETAIL =====
   document.getElementById("essence").innerHTML = primary.essence || "";
   document.getElementById("strengths").innerHTML = primary.strengths || "";
   document.getElementById("pitfalls").innerHTML = primary.pitfalls || "";
@@ -93,11 +85,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   detailCard.style.display = "block";
 
-  // ===== COPY =====
   document.getElementById("copyBtn")?.addEventListener("click", async () => {
-    const t =
-      `【金持ちタイプ診断】\n主軸：${primary.name}（${primary.enName}）\n` +
-      `補助：${secondary ? secondary.name + "（" + secondary.enName + "）" : "—"}`;
+    const t = `【金持ちタイプ診断】\n主軸：${primary.name}（${primary.enName}）\n補助：${secondary ? secondary.name + "（" + secondary.enName + "）" : "—"}`;
     try {
       await navigator.clipboard.writeText(t);
       alert("コピーしました");
@@ -107,10 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.getElementById("copyAllBtn")?.addEventListener("click", async () => {
-    const text =
-      hero.innerText.trim() + "\n\n" +
-      scoreCard.innerText.trim() + "\n\n" +
-      detailCard.innerText.trim();
+    const text = hero.innerText.trim() + "\n\n" + scoreCard.innerText.trim() + "\n\n" + detailCard.innerText.trim();
     try {
       await navigator.clipboard.writeText(text);
       alert("全文をコピーしました");

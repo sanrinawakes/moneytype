@@ -1,9 +1,10 @@
 // ===============================
-// 金持ちタイプ診断 app.js（URL結果渡し・完全版）
+// 金持ちタイプ診断 app.js
+// 質問順ランダム＋選択肢順ランダム対応・完全版
 // ===============================
 
 // -------------------------------
-// ユーティリティ：シャッフル
+// ユーティリティ：シャッフル（非破壊）
 // -------------------------------
 function shuffle(array) {
   const arr = array.slice();
@@ -15,18 +16,27 @@ function shuffle(array) {
 }
 
 // -------------------------------
-// 質問配列（表示用）
+// 質問配列の準備
 // フェーズ1：固定 / フェーズ2：ランダム
 // -------------------------------
 const phase1 = QUESTIONS.filter(q => q.type === "polarity");
 const phase2 = QUESTIONS.filter(q => q.type !== "polarity");
-const DISPLAY_QUESTIONS = [...phase1, ...shuffle(phase2)];
+
+const DISPLAY_QUESTIONS = [
+  ...phase1,
+  ...shuffle(phase2)
+];
 
 // -------------------------------
 // 状態管理
 // -------------------------------
 let current = 0;
+
+// answers には「元の choices の index」を保存する
 let answers = [];
+
+// 各質問ごとの「表示用シャッフル済み choices」を保持
+const shuffledChoicesMap = {};
 
 // -------------------------------
 // DOM取得
@@ -75,19 +85,17 @@ nextBtn.addEventListener("click", () => {
 
   current++;
 
-  // 最後まで回答 → 結果へ
   if (current >= DISPLAY_QUESTIONS.length) {
     const selectedChoices = answers.map(
-      (choiceIndex, i) => DISPLAY_QUESTIONS[i].choices[choiceIndex]
+      (choiceIndex, i) =>
+        DISPLAY_QUESTIONS[i].choices[choiceIndex]
     );
 
     const result = DIAGNOSIS.calculate(selectedChoices);
 
-    // 結果をURLに載せる（Base64）
     const encoded = btoa(
       encodeURIComponent(JSON.stringify(result))
     );
-
     location.href = `result.html?data=${encoded}`;
     return;
   }
@@ -96,7 +104,7 @@ nextBtn.addEventListener("click", () => {
 });
 
 // -------------------------------
-// 描画
+// 描画処理
 // -------------------------------
 function render() {
   const q = DISPLAY_QUESTIONS[current];
@@ -108,16 +116,28 @@ function render() {
   progressFill.style.width =
     `${Math.round(((current + 1) / DISPLAY_QUESTIONS.length) * 100)}%`;
 
+  // この質問の選択肢がまだシャッフルされていなければ作る
+  if (!shuffledChoicesMap[current]) {
+    shuffledChoicesMap[current] = shuffle(
+      q.choices.map((choice, index) => ({
+        choice,
+        index // 元の index を保持
+      }))
+    );
+  }
+
+  const shuffled = shuffledChoicesMap[current];
+
   choicesBox.innerHTML = "";
 
-  q.choices.forEach((choice, idx) => {
+  shuffled.forEach(({ choice, index }) => {
     const div = document.createElement("div");
     div.className =
-      "choice" + (answers[current] === idx ? " selected" : "");
+      "choice" + (answers[current] === index ? " selected" : "");
     div.textContent = choice.text;
 
     div.addEventListener("click", () => {
-      answers[current] = idx;
+      answers[current] = index;
       nextBtn.disabled = false;
       render();
     });

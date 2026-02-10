@@ -15,7 +15,6 @@ window.DIAGNOSIS = {
     const sorted = Object.entries(scores).sort((a, b) => b[1] - a[1]);
 
     return {
-      // result.jsの読み込み名に合わせて修正
       primaryKey: sorted[0]?.[0] || null,
       secondaryKey: sorted[1]?.[0] || null,
       polarity: polarity.out >= polarity.in ? "out" : "in",

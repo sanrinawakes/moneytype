@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const scoreCard = document.getElementById("scoreCard");
   const detailCard = document.getElementById("detailCard");
 
+  // URLから data を取得
   const params = new URLSearchParams(location.search);
   const encoded = params.get("data");
 
@@ -16,12 +17,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let result;
   try {
+    // デコード処理
     result = JSON.parse(decodeURIComponent(atob(encoded)));
   } catch (e) {
+    console.error("Decode Error:", e);
     noData.style.display = "block";
     return;
   }
 
+  // logic.js で定義したキー名で取得
   const primaryKey = result.primaryKey;
   const secondaryKey = result.secondaryKey;
 
@@ -33,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
+  // ===== HERO エリア =====
   document.getElementById("badge").textContent = "TYPE";
   document.getElementById("typeName").textContent = primary.name;
   document.getElementById("typeEn").textContent = primary.enName || "";
@@ -44,6 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   hero.style.display = "block";
 
+  // ===== スコア内訳 =====
   const bars = document.getElementById("bars");
   const scores = result.scores || {};
   const entries = Object.entries(scores);
@@ -72,19 +78,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   scoreCard.style.display = "block";
 
-  document.getElementById("essence").innerHTML = primary.essence || "";
-  document.getElementById("strengths").innerHTML = primary.strengths || "";
-  document.getElementById("pitfalls").innerHTML = primary.pitfalls || "";
-  document.getElementById("position").innerHTML = primary.position || "";
-  document.getElementById("workstyle").innerHTML = primary.workstyle || "";
-  document.getElementById("invest").innerHTML = primary.invest || "";
-  document.getElementById("danger").innerHTML = primary.danger || "";
-  document.getElementById("good").innerHTML = primary.good || "";
-  document.getElementById("jobs").innerHTML = primary.jobs || "";
-  document.getElementById("synergy").innerHTML = primary.synergy || "";
+  // ===== 詳細パネル（すべての項目を反映） =====
+  const fields = ["essence", "strengths", "pitfalls", "position", "workstyle", "invest", "danger", "good", "jobs", "synergy"];
+  fields.forEach(f => {
+    const el = document.getElementById(f);
+    if (el) el.innerHTML = primary[f] || "";
+  });
 
   detailCard.style.display = "block";
 
+  // コピーボタンの設定
   document.getElementById("copyBtn")?.addEventListener("click", async () => {
     const t = `【金持ちタイプ診断】\n主軸：${primary.name}（${primary.enName}）\n補助：${secondary ? secondary.name + "（" + secondary.enName + "）" : "—"}`;
     try {

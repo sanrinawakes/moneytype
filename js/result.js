@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("badge").textContent = "TYPE";
 
   document.getElementById("typeName").textContent =
-    `あなたの中の「${primary.innerName || primary.name}」`;
+    `「${primary.innerName || primary.name}」`;
 
   document.getElementById("typeEn").textContent =
     `（${primary.name} / ${primary.enName}）`;

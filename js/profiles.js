@@ -2,11 +2,11 @@ window.MONEY_TYPE_PROFILES_10 = {
 
   expand_drive: {
     key: "expand_drive",
-    name: "拡張推進型",
+    name: "開拓者",
     enName: "Expansion Driver",
     tagline: "広げるほど、流れが生まれる",
     essence: `
-      <p>拡張推進型は「整ってから動く」より、<b>動きながら整える</b>ことでお金と機会を引き寄せるタイプです。</p>
+      <p>開拓者は「整ってから動く」より、<b>動きながら整える</b>ことでお金と機会を引き寄せるタイプです。</p>
       <p>未完成でも前に出た瞬間に、人・情報・資金が集まりやすい。止まるほど停滞し、動くほど流れが生まれます。</p>
     `,
     strengths: `
@@ -43,20 +43,20 @@ window.MONEY_TYPE_PROFILES_10 = {
     `,
     synergy: `
       <ul>
-        <li><b>精度構築型</b>：拡張した流れを仕組みに落とし、再現性を作る。</li>
-        <li><b>場づくり安定型</b>：人と場の混乱を整え、拡張フェーズの事故を防ぐ。</li>
-        <li><b>基盤保持型</b>：資金・リスク面の守りを担い、長期安定を支える。</li>
+        <li><b>設計者</b>：拡張した流れを仕組みに落とし、再現性を作る。</li>
+        <li><b>調整者</b>：人と場の混乱を整え、拡張フェーズの事故を防ぐ。</li>
+        <li><b>守護者</b>：資金・リスク面の守りを担い、長期安定を支える。</li>
       </ul>
     `
   },
 
   grow_stack: {
     key: "grow_stack",
-    name: "成長蓄積型",
+    name: "育成者",
     enName: "Growth Builder",
     tagline: "育てたものが、時間差で返ってくる",
     essence: `
-      <p>成長蓄積型は、短期より長期で強い。<b>育てたものが時間差で返ってくる</b>タイプです。</p>
+      <p>育成者は、短期より長期で強い。<b>育てたものが時間差で返ってくる</b>タイプです。</p>
       <p>焦って即金ルートに寄るほど苦しくなり、積み上げを信じるほど後から伸びます。</p>
     `,
     strengths: `
@@ -93,19 +93,19 @@ window.MONEY_TYPE_PROFILES_10 = {
     `,
     synergy: `
       <ul>
-        <li><b>影響発信型</b>：育てた価値を外に届け、認知と反応を作る。</li>
-        <li><b>拡張推進型</b>：積み上げたものを一気に広げる推進力。</li>
+        <li><b>伝達者</b>：育てた価値を外に届け、認知と反応を作る。</li>
+        <li><b>開拓者</b>：積み上げたものを一気に広げる推進力。</li>
       </ul>
     `
   },
 
   influence_send: {
     key: "influence_send",
-    name: "影響発信型",
+    name: "伝達者",
     enName: "Influence Communicator",
     tagline: "言葉と共感が、そのまま価値になる",
     essence: `
-      <p>影響発信型は、商品より<b>「あなたから買いたい」</b>が起きるタイプです。</p>
+      <p>伝達者は、商品より<b>「あなたから買いたい」</b>が起きるタイプです。</p>
       <p>共感・言語化・世界観への反応が収益につながります。</p>
     `,
     strengths: `
@@ -142,19 +142,19 @@ window.MONEY_TYPE_PROFILES_10 = {
     `,
     synergy: `
       <ul>
-        <li><b>成長蓄積型</b>：中身と深さを補い、発信に厚みを出す。</li>
-        <li><b>精度構築型</b>：発信を仕組みにし、再現性を作る。</li>
+        <li><b>育成者</b>：中身と深さを補い、発信に厚みを出す。</li>
+        <li><b>設計者</b>：発信を仕組みにし、再現性を作る。</li>
       </ul>
     `
   },
 
   inner_resonance: {
     key: "inner_resonance",
-    name: "内的共鳴型",
+    name: "共鳴者",
     enName: "Deep Resonator",
     tagline: "深い理解が、長期の信頼と収益になる",
     essence: `
-      <p>内的共鳴型は、数より深さ。<b>少人数で深く関わるほど</b>豊かになるタイプです。</p>
+      <p>共鳴者は、数より深さ。<b>少人数で深く関わるほど</b>豊かになるタイプです。</p>
       <p>伴走・顧問・継続支援の形で、信頼が長期収入になります。</p>
     `,
     strengths: `
@@ -190,19 +190,19 @@ window.MONEY_TYPE_PROFILES_10 = {
     `,
     synergy: `
       <ul>
-        <li><b>影響発信型</b>：深い価値を外に伝え、広がりを作る。</li>
-        <li><b>場づくり安定型</b>：関係性を長期で安定させる。</li>
+        <li><b>伝達者</b>：深い価値を外に伝え、広がりを作る。</li>
+        <li><b>調整者</b>：関係性を長期で安定させる。</li>
       </ul>
     `
   },
 
   place_stable: {
     key: "place_stable",
-    name: "場づくり安定型",
+    name: "調整者",
     enName: "Stability Facilitator",
     tagline: "場が安定すると、豊かさも安定する",
     essence: `
-      <p>場づくり安定型は、あなたがいることで<b>人と流れが定着</b>するタイプです。</p>
+      <p>調整者は、あなたがいることで<b>人と流れが定着</b>するタイプです。</p>
       <p>運営・調整・安定化が価値になり、長期で効きます。</p>
     `,
     strengths: `
@@ -238,19 +238,19 @@ window.MONEY_TYPE_PROFILES_10 = {
     `,
     synergy: `
       <ul>
-        <li><b>拡張推進型</b>：動きと拡張を安全に受け止める。</li>
-        <li><b>循環起動型</b>：人の流れを安定して回す。</li>
+        <li><b>開拓者</b>：動きと拡張を安全に受け止める。</li>
+        <li><b>連結者</b>：人の流れを安定して回す。</li>
       </ul>
     `
   },
 
   base_hold: {
     key: "base_hold",
-    name: "基盤保持型",
+    name: "守護者",
     enName: "Foundation Keeper",
     tagline: "守りが整うほど、長期で強くなる",
     essence: `
-      <p>基盤保持型は、派手さより<b>長期安定</b>で勝つタイプです。</p>
+      <p>守護者は、派手さより<b>長期安定</b>で勝つタイプです。</p>
       <p>守りが整うほど判断が冴え、結果が堅く積み上がります。</p>
     `,
     strengths: `
@@ -285,19 +285,19 @@ window.MONEY_TYPE_PROFILES_10 = {
     `,
     synergy: `
       <ul>
-        <li><b>拡張推進型</b>：攻めの裏側を守る。</li>
-        <li><b>決断最適化型</b>：判断を現実的に支える。</li>
+        <li><b>開拓者</b>：攻めの裏側を守る。</li>
+        <li><b>決裁者</b>：判断を現実的に支える。</li>
       </ul>
     `
   },
 
   decide_opt: {
     key: "decide_opt",
-    name: "決断最適化型",
+    name: "決裁者",
     enName: "Decision Optimizer",
     tagline: "決めることで、成果が最短化する",
     essence: `
-      <p>決断最適化型は、正しい判断が<b>そのまま利益</b>になるタイプです。</p>
+      <p>決裁者は、正しい判断が<b>そのまま利益</b>になるタイプです。</p>
       <p>迷いを減らすほど成果が上がります。</p>
     `,
     strengths: `
@@ -332,19 +332,19 @@ window.MONEY_TYPE_PROFILES_10 = {
     `,
     synergy: `
       <ul>
-        <li><b>成長蓄積型</b>：判断を長期運用に落とし込む。</li>
-        <li><b>精度構築型</b>：決断を仕組みとして固定化する。</li>
+        <li><b>育成者</b>：判断を長期運用に落とし込む。</li>
+        <li><b>設計者</b>：決断を仕組みとして固定化する。</li>
       </ul>
     `
   },
 
   precision_build: {
     key: "precision_build",
-    name: "精度構築型",
+    name: "設計者",
     enName: "System Architect",
     tagline: "仕組みと再現性で、安定収益を作る",
     essence: `
-      <p>精度構築型は、仕組み・設計・再現性で<b>安定収益</b>を作るタイプです。</p>
+      <p>設計者は、仕組み・設計・再現性で<b>安定収益</b>を作るタイプです。</p>
       <p>一度作った構造が何度も働く状態が、最も楽です。</p>
     `,
     strengths: `
@@ -379,19 +379,19 @@ window.MONEY_TYPE_PROFILES_10 = {
     `,
     synergy: `
       <ul>
-        <li><b>拡張推進型</b>：動きを仕組みに落とす。</li>
-        <li><b>影響発信型</b>：発信を自動化・再現化する。</li>
+        <li><b>開拓者</b>：動きを仕組みに落とす。</li>
+        <li><b>伝達者</b>：発信を自動化・再現化する。</li>
       </ul>
     `
   },
 
   flow_cycle: {
     key: "flow_cycle",
-    name: "循環起動型",
+    name: "連結者",
     enName: "Flow Connector",
     tagline: "つなぐ・回すことで、流れが生まれる",
     essence: `
-      <p>循環起動型は、人・情報・お金を<b>循環</b>させることで豊かになるタイプです。</p>
+      <p>連結者は、人・情報・お金を<b>循環</b>させることで豊かになるタイプです。</p>
       <p>流れの中心にいるほど機会が集まります。</p>
     `,
     strengths: `
@@ -427,19 +427,19 @@ window.MONEY_TYPE_PROFILES_10 = {
     `,
     synergy: `
       <ul>
-        <li><b>場づくり安定型</b>：流れを安定的に回す。</li>
-        <li><b>内的共鳴型</b>：信頼の深さを補う。</li>
+        <li><b>調整者</b>：流れを安定的に回す。</li>
+        <li><b>共鳴者</b>：信頼の深さを補う。</li>
       </ul>
     `
   },
 
   resource_store: {
     key: "resource_store",
-    name: "資源貯蔵型",
+    name: "蓄積者",
     enName: "Resource Strategist",
     tagline: "備えとタイミングで、強く動ける",
     essence: `
-      <p>資源貯蔵型は、溜めて備え、<b>最適なタイミングで一気に動く</b>タイプです。</p>
+      <p>蓄積者は、溜めて備え、<b>最適なタイミングで一気に動く</b>タイプです。</p>
       <p>焦らず準備できるほど、勝てる局面が増えます。</p>
     `,
     strengths: `
@@ -474,8 +474,8 @@ window.MONEY_TYPE_PROFILES_10 = {
     `,
     synergy: `
       <ul>
-        <li><b>拡張推進型</b>：蓄えた価値を使ってもらう。</li>
-        <li><b>影響発信型</b>：資源を表に出す。</li>
+        <li><b>開拓者</b>：蓄えた価値を使ってもらう。</li>
+        <li><b>伝達者</b>：資源を表に出す。</li>
       </ul>
     `
   }
